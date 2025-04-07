@@ -1,17 +1,47 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react"; // this is used to create elements
+import ReactDOM from "react-dom/client"; // this is used to render elements
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+// const element = React.createElement("h1", null, "Hello, world!");
+
+const element = <h1>Hello, world!</h1>;
+
+// this is the same as:
+// React.createElement(
+//   "h1",
+//   null,
+//   "Hello, world!"
+
+console.log(element);
+
+//react elements are immutable(they cannot be changed)
+const element2 = (
+  <h1 className="greeting">
+    Hello, world!
+    <span className="text">How are you?</span>
+  </h1>
 );
+console.log(element2);
+/*
+element2 ={
+  type: "h1",
+  props: {
+    className: "greeting",
+    children: [
+      "Hello, world!",
+      {
+        type: "span",
+        props: {
+          className: "text",
+          children: "How are you?",
+        },
+      },
+    ],
+  },
+};
+}
+*/
+// Create a root using createRoot
+const root = ReactDOM.createRoot(document.getElementById("root"));
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// Render element to the root
+root.render(element2);
