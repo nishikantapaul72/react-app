@@ -4,6 +4,7 @@ import ReactDOM from "react-dom/client";
 // Create a class-based component called Clock
 class Clock extends React.Component {
   render() {
+    // when we change probs, the component will re-render
     return (
       <h1 className="heading">
         <span className="text">
