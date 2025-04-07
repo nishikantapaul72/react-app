@@ -1,47 +1,31 @@
-import React from "react"; // this is used to create elements
-import ReactDOM from "react-dom/client"; // this is used to render elements
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-// const element = React.createElement("h1", null, "Hello, world!");
-
-const element = <h1>Hello, world!</h1>;
-
-// this is the same as:
-// React.createElement(
-//   "h1",
-//   null,
-//   "Hello, world!"
-
-console.log(element);
-
-//react elements are immutable(they cannot be changed)
-const element2 = (
-  <h1 className="greeting">
-    Hello, world!
-    <span className="text">How are you?</span>
-  </h1>
-);
-console.log(element2);
-/*
-element2 ={
-  type: "h1",
-  props: {
-    className: "greeting",
-    children: [
-      "Hello, world!",
-      {
-        type: "span",
-        props: {
-          className: "text",
-          children: "How are you?",
-        },
-      },
-    ],
-  },
-};
+// Create a class-based component called Clock
+class Clock extends React.Component {
+  render() {
+    return (
+      <h1 className="heading">
+        <span className="text">
+          Hello - {this.props.children},{" "}
+          {new Date().toLocaleTimeString(this.props.locale)}
+        </span>
+      </h1>
+    );
+  }
 }
-*/
-// Create a root using createRoot
+
+// use the createRoot method for rendering
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-// Render element to the root
-root.render(element2);
+/*
+React Fragments (<> ... </>): This allows you to return multiple elements without introducing a new parent element in the DOM. 
+It's a shorthand for <React.Fragment>.
+*/
+// Render both Clock components inside a parent element
+root.render(
+  <>
+    <Clock locale="bn-BD" />
+    <Clock locale="bn-BD">Test</Clock>
+  </>
+);
