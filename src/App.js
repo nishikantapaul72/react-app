@@ -1,14 +1,40 @@
+import React from "react";
 import ClickCounter from "./components/ClickCounter";
-import HoverCounter from "./components/HoverCounter";
+import Counter from "./components/Counter";
+import Section from "./components/Section";
+import ThemeContext from "./contexts/themeContext";
+import { render } from "@testing-library/react";
 
-function App() {
-  const quantities = [1, 2, 3];
-  return (
-    <div>
-      <ClickCounter />
-      <HoverCounter />
-    </div>
-  );
+export default class App extends React.Component {
+  state = {
+    theme: "light",
+    switchTheme: () => {
+      this.setState(({ theme }) => {
+        if (theme === "dark") {
+          return {
+            theme: "light",
+          };
+        }
+        return {
+          theme: "dark",
+        };
+      });
+    },
+  };
+
+  render() {
+    return (
+      <div className="app">
+        <Counter>
+          {/* This is a render prop  */}
+          {(counter, incrementCount) => (
+            <ClickCounter count={counter} incrementCount={incrementCount} />
+          )}
+        </Counter>
+        <ThemeContext.Provider value={this.state}>
+          <Section />
+        </ThemeContext.Provider>
+      </div>
+    );
+  }
 }
-
-export default App;
