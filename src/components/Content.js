@@ -25,3 +25,16 @@ export default function Content() {
     </div>
   );
 }
+
+/*
+render probs syntax:
+<SomeComponent>
+  {(data1, data2, ...) => (
+    <AnotherComponent
+      prop1={data1}
+      prop2={data2}
+      // any other props
+    />
+  )}
+</SomeComponent>
+*/
