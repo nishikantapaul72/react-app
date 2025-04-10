@@ -1,11 +1,11 @@
 import React from "react";
-import MyComponent from "./components/MyComponent";
+import AnotherComponent from "./components/AnotherComponent";
 
 export default class App extends React.Component {
   render() {
     return (
       <div>
-        <MyComponent />
+        <AnotherComponent />
       </div>
     );
   }
