@@ -1,18 +1,54 @@
-import React from "react";
-import useToggle from "./components/CustomComponent"; 
+import "./App.css";
+import Navbar from "./components/Navbar";
+import Home from "./components/Home";
+import Login from "./components/Login";
+import About from "./components/About";
+import User from "./components/User";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 function App() {
-  // Use the custom hook
-  const [isVisible, toggleVisibility] = useToggle(false);
-
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: (
+        <>
+          <Navbar />
+          <Home />
+        </>
+      ),
+    },
+    {
+      path: "/login",
+      element: (
+        <>
+          <Navbar />
+          <Login />
+        </>
+      ),
+    },
+    {
+      path: "/about",
+      element: (
+        <>
+          <Navbar />
+          <About />
+        </>
+      ),
+    },
+    {
+      path: "/user/:username",
+      element: (
+        <>
+          <Navbar />
+          <User />
+        </>
+      ),
+    },
+  ]);
   return (
-    <div style={{ padding: "20px", textAlign: "center" }}>
-      <h1>Toggle Example</h1>
-      <button onClick={toggleVisibility}>
-        {isVisible ? "Hide" : "Show"} Content
-      </button>
-      {isVisible && <p>This content is toggled on!</p>}
-    </div>
+    <>
+      <RouterProvider router={router} />
+    </>
   );
 }
 
